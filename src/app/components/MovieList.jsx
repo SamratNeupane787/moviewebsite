@@ -4,20 +4,48 @@ import movieResponse from '../hooks/fetchImage'
 import { FaStar } from "react-icons/fa";
 import Image from 'next/image';
 import Link from 'next/link';
-function MovieList() {
-  const { getMovie, loading } = movieResponse();
-  const [movies, setMovies] = useState([])
-  useEffect(()=>{
-    const callMovieApi = async()=>{
-      const response = await getMovie()
-      console.log(response)
-      setMovies(response)
-    }
+import { InfinitySpin } from 'react-loader-spinner';
 
-    callMovieApi()
-  },[])
+function MovieList() {
+  const { getMovie } = movieResponse();
+  const [movies, setMovies] = useState([])
+  const [loading ,setLoading] = useState(false)
+  useEffect(() => {
+    const callMovieApi = async () => {
+
+      try {
+        setLoading(true)
+        const response = await getMovie();
+        console.log(response);
+        setMovies(response);
+      } catch (error) {
+        setLoading(true);
+        alert('Error fetching Movies')
+      }
+      finally{
+        setLoading(false)
+      }
+    };
+
+    callMovieApi();
+  }, [])
+  
+  
+ if(loading){
   return (
-    <div className="m-4">
+    <div className=' flex flex-row items-center justify-center'>
+      <InfinitySpin
+        visible={true}
+        width="200"
+        color="#4fa94d"
+        ariaLabel="infinity-spin-loading"
+        className=" spinner"
+      />
+    </div>
+  );
+}
+  return (
+   ( <div className="m-4">
       <div className="grid place-items-center grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6 ">
         {movies.map((item, index) => (
           <div
@@ -46,7 +74,7 @@ function MovieList() {
           </div>
         ))}
       </div>
-    </div>
+    </div>)
   );
 }
 
