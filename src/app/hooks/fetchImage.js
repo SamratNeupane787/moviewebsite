@@ -6,7 +6,7 @@ export default function movieResponse(){
       loading =true
       const response = await fetch('https://yts.mx/api/v2/list_movies.json') 
       const data = await response.json()
-      console.log(data.data.movies)
+      console.log(data)
       return data.data.movies
       
     } catch (error) {
