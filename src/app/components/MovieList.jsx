@@ -15,11 +15,9 @@ function MovieList() {
 
   useEffect(() => {
     const callMovieApi = async () => {
-
       try {
         setLoading(true)
         const response = await getMovie();
-        console.log(response);
         setMovies(response);
       } catch (error) {
         setLoading(true);
