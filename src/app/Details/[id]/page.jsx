@@ -1,10 +1,10 @@
 "use client"
 import Image from "next/image";
-import { useParams, useSearchParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import movieResponse from "@/app/hooks/fetchImage";
 import { InfinitySpin } from "react-loader-spinner";
-import { CiClock1, CiStar, CiTimer } from "react-icons/ci";
+import { CiClock1 } from "react-icons/ci";
 import { FaCalendar, FaStar } from "react-icons/fa";
 function SinglePage() {
   const params= useParams()

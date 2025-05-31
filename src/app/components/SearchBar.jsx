@@ -4,12 +4,24 @@ import { CiSearch } from "react-icons/ci";
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaStar } from 'react-icons/fa';
+import { ToastContainer, toast } from "react-toastify";
+
 function SearchBar() {
   const [ query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery]= useState(query)
   const [result , onResult ] = useState([])
   const [genre, SetGenre] = useState(false)
-
+  const notify = (text) => toast(text, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      
+  });
   useEffect(()=>{
     const timer = setTimeout(()=>{
       setDebouncedQuery(query)
@@ -30,9 +42,9 @@ function SearchBar() {
         const res = await fetch(url);
         const data = await res.json();
         onResult(data?.data?.movies || []);
-        console.log(data);
+        
       } catch (error) {
-        alert("Error fetching movies");
+        notify("Error fetching movies");
         onResult([]);
       }
       };
@@ -62,7 +74,7 @@ function SearchBar() {
         )}
       </div>
      
-        <button onClick={handleGenre} className=" bg-amber-600 px-4 h-[2rem] rounded-md">
+        <button onClick={handleGenre} className=" bg-amber-600 w-auto px-4 h-[2rem] mt-3 rounded-md sm:w-full md:w-auto">
           {genre ? 'Search by Title' : 'Search by Genre'}
         </button>
       
