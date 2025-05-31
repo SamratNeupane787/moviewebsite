@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import getGenre from "@/app/hooks/fetchGenre";
 import { ClipLoader } from 'react-spinners';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import SearchBar from '@/app/components/SearchBar';
 
 function page() {
    const params= useParams()
@@ -43,6 +44,10 @@ function page() {
     }  
     return (
       <div className="m-4">
+        <SearchBar/>
+        <h2 className=" text-3xl font-semibold text-center py-5 ">
+          Movies in <span className=' text-green-500'>{genre}</span>
+        </h2>
         <div className="grid place-items-center grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5  xl:grid-cols-5 gap-6 ">
           {genreMov.slice(page * 10 - 10, page * 10).map((item, index) => (
             <ListMovie
