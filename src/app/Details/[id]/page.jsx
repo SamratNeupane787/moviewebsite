@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import movieResponse from "@/app/hooks/fetchImage";
-import { InfinitySpin } from "react-loader-spinner";
+import { ClipLoader } from "react-spinners";
 import { CiClock1 } from "react-icons/ci";
 import { FaCalendar, FaStar } from "react-icons/fa";
 function SinglePage() {
@@ -32,9 +32,11 @@ function SinglePage() {
   },[])
   console.log(moviedetail)
   if(loading){
-    return <div className=" flex flex-row items-center  justify-center">
-      <InfinitySpin/>
-    </div>
+    return (
+      <div className=" flex flex-row items-center  justify-center">
+        <ClipLoader color="#36d7b7" size={50} />
+      </div>
+    );
   }
   return (
     <div className="  grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-8 px-4 py-10 lg:px-20">
