@@ -43,6 +43,9 @@ function page() {
     }  
     return (
       <div className="m-4">
+        <h2 className=" text-3xl font-semibold text-center py-5 ">
+          Movies in <span className=' text-green-500'>{genre}</span>
+        </h2>
         <div className="grid place-items-center grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5  xl:grid-cols-5 gap-6 ">
           {genreMov.slice(page * 10 - 10, page * 10).map((item, index) => (
             <ListMovie
