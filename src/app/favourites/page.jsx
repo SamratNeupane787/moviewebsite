@@ -28,9 +28,12 @@ function page() {
   }
   
   return (
-    <div className="  grid grid-cols-1 place-items-center    sm:grid-cols-1 md:grid-cols-4">
-      {fav.map((item, index) => (
-        
+    <>
+      <h2 className=" text-3xl font-semibold text-center py-5 ">
+        Your <span className=" text-green-500">Favourites</span>
+      </h2>
+      <div className="  grid grid-cols-1 place-items-center    sm:grid-cols-1 md:grid-cols-4">
+        {fav.map((item, index) => (
           <ListMovie
             key={index}
             image={item.image}
@@ -39,10 +42,9 @@ function page() {
             year={item.year}
             id={item.id}
           />
-         
-       
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }
 
