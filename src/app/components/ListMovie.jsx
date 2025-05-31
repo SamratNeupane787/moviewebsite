@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { ToastContainer, toast } from "react-toastify";
 
 
-function ListMovie({id,image, title ,rating ,year}) {
+function ListMovie({id,image, title ,rating ,year, onRemove}) {
   const [added, setAdded] = useState(false)
   const notify = (text) => toast(text, {
     position: "top-right",
@@ -57,6 +57,8 @@ function ListMovie({id,image, title ,rating ,year}) {
     localStorage.setItem("favourites", JSON.stringify(update));
     alert("Removed from favourite");
     setAdded(false);
+
+    if(onRemove) onRemove(id)
   }
 
 

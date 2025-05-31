@@ -1,27 +1,32 @@
 "use client"
-import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import ListMovie from '../components/ListMovie'
-import Link from 'next/link'
-import { FaDumpster } from 'react-icons/fa'
+
 function page() {
   const  [fav, setFav] = useState([])
 
-
-  useEffect(()=>{
+  const loadFavourites = () => {
     try {
-      const favmovies =JSON.parse( localStorage.getItem('favourites'))
-      setFav(favmovies || [])
+      const favMovies = JSON.parse(localStorage.getItem("favourites")) || [];
+      setFav(favMovies);
     } catch (error) {
-     
-      alert("Error getting favourite movie")
+      alert("Error getting favourite movie");
     }
-  },[fav])
+  };
+
+  useEffect(() => {
+    loadFavourites();
+    const interval = setInterval(() => {
+      loadFavourites();
+    }, 500); 
+    return () => clearInterval(interval);
+  }, []);
+
   console.log(fav)
 
   if(fav.length == 0){
     return (
-      <p className=" text-4xl h-screen text-center">
+      <p className=" text-4xl  text-center">
         No movies added to <span className=' text-green-600'>Favourites</span>
       </p>
     );
@@ -32,7 +37,7 @@ function page() {
       <h2 className=" text-3xl font-semibold text-center py-5 ">
         Your <span className=" text-green-500">Favourites</span>
       </h2>
-      <div className="  grid grid-cols-1 place-items-center    sm:grid-cols-1 md:grid-cols-4">
+      <div className="  grid grid-cols-1 place-items-center sm:grid-cols-1 md:grid-cols-4">
         {fav.map((item, index) => (
           <ListMovie
             key={index}
