@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import movieResponse from '../hooks/fetchImage'
-import { InfinitySpin } from 'react-loader-spinner';
+import { ClipLoader } from "react-spinners";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import ListMovie from './ListMovie';
@@ -42,14 +42,8 @@ function MovieList() {
   
  if(loading){
   return (
-    <div className=' flex flex-row items-center justify-center'>
-      <InfinitySpin
-        visible={true}
-        width="200"
-        color="#4fa94d"
-        ariaLabel="infinity-spin-loading"
-        className=" spinner"
-      />
+    <div className=" flex flex-row items-center justify-center">
+      <ClipLoader color="#36d7b7" size={50} />
     </div>
   );
 }
