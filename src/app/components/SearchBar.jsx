@@ -92,7 +92,7 @@ function SearchBar() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-8 mx-8 z-10 gap-3">
+    <div className="flex flex-col items-center justify-center p-8 mx-8  gap-3">
       <div className="bg-black w-[16rem] h-12 rounded-full relative flex items-center justify-between gap-3 px-4 sm:w-[16rem] md:w-[32rem]">
         <CiSearch className="text-white text-xl " />
         <input
