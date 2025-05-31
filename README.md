@@ -2,6 +2,9 @@
 
 This is a **Movie Website** built using [Next.js](https://nextjs.org). It showcases a collection of movies, allowing users to explore details such as genre, rating, runtime, and more. The project is styled with Tailwind CSS and supports dynamic routing for individual movie pages.
 
+## Live Url
+[Demo Link](https://moviewebsite.samratneupane.com.np/)
+
 ## 🚀 Getting Started
 
 To run the development server:
