@@ -18,11 +18,13 @@ function Navbar() {
             Movies <span className=" text-green-600">Website</span>
           </h1>
         </Link>
-        <Link href="/favourites">
-          <ul>
+
+        <ul className=" flex flex-row gap-3 items-center justify-between text-green-600">
+          <Link href="/favourites">
             <li className="  text-2xl">Favourites</li>
-          </ul>
-        </Link>
+          </Link>
+       
+        </ul>
       </div>
 
       <div className="flex items-center justify-between mx-4 py-6 sm:flex md:hidden">
