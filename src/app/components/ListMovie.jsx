@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { FaProductHunt, FaStar } from "react-icons/fa";
-import { CiCalendar, CiSaveUp1 } from "react-icons/ci";
+import {  FaStar } from "react-icons/fa";
+import { CiCalendar } from "react-icons/ci";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import Image from 'next/image';
 import Link from 'next/link'
@@ -40,8 +40,9 @@ function ListMovie({id,image, title ,rating ,year}) {
     if (!isAlreadyAdded) {
       const updated = [...existing, { id, image, title, rating, year }];
       localStorage.setItem("favourites", JSON.stringify(updated));
-      setAdded(true);
       notify("Added to favourite");
+      setAdded(true);
+     
     } else {
       notify("Already in favorites");
      

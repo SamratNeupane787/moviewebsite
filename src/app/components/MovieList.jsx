@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import movieResponse from '../hooks/fetchImage'
 import { ClipLoader } from "react-spinners";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import { ToastContainer, toast } from "react-toastify";
 import ListMovie from './ListMovie';
 
 
