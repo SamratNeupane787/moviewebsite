@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {  FaStar } from "react-icons/fa";
+import {  FaDumpster, FaStar } from "react-icons/fa";
 import { CiCalendar } from "react-icons/ci";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import Image from 'next/image';
@@ -40,24 +40,33 @@ function ListMovie({id,image, title ,rating ,year}) {
     if (!isAlreadyAdded) {
       const updated = [...existing, { id, image, title, rating, year }];
       localStorage.setItem("favourites", JSON.stringify(updated));
-      notify("Added to favourite");
+      alert("Added to favourite");
       setAdded(true);
      
     } else {
-      notify("Already in favorites");
+      alert("Already in favorites");
+
      
     }
   };
   
+  const handleRemove = (id)=>{
+    const existing  = JSON.parse(localStorage.getItem('favourites'))|| []
+    const update =  existing.filter((item)=> item.id !== id)
+
+    localStorage.setItem("favourites", JSON.stringify(update));
+    alert("Removed from favourite");
+    setAdded(false);
+  }
 
 
 
   return (
     <div
       key={year}
-      className="bg-[#222223]   rounded-md hover:bg-[#414142] duration-100 transition"
+      className="bg-[#222223] rounded-md hover:bg-[#414142] duration-100 transition"
     >
-      <div className="flex flex-col  w-[14rem] sm:w-[11rem] md:w-[16rem] h-[28rem] items-center justify-center gap-3 p-4">
+      <div className="flex flex-col  w-[14rem] sm:w-[11rem] md:w-[16rem] h-[32rem] items-center justify-center gap-3 p-4">
         <Link href={`/Details/${id}`}>
           <Image
             src={image}
@@ -81,17 +90,21 @@ function ListMovie({id,image, title ,rating ,year}) {
 
         <div
           className={`${
-            added ? "bg-green-800" : "bg-green-600"
+            added ? "bg-red-800" : "bg-green-600"
           } mt-2 text-center p-2 rounded-md sm:p-1 md:p-3`}
-          onClick={() => handleFavourite({ id, image, title, rating, year })}
+          onClick={() => {
+            if(added){
+            handleRemove(id)
+          }else{
+          handleFavourite({ id, image, title, rating, year })}}}
         >
           <button className=" flex flex-row gap-3 items-center justify-center">
             <MdOutlineBookmarkAdd />
-            {added ? "Added to fav" : "Favourite"}
+            {added ? "Remove from Fav" : "Favourite"}
           </button>
-          <ToastContainer />
         </div>
       </div>
+      {/* <ToastContainer className="z-10" /> */}
     </div>
   );
 }

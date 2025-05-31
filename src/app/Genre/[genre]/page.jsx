@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import getGenre from "@/app/hooks/fetchGenre";
 import { ClipLoader } from 'react-spinners';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import SearchBar from '@/app/components/SearchBar';
 
 function page() {
    const params= useParams()
@@ -43,6 +44,7 @@ function page() {
     }  
     return (
       <div className="m-4">
+        <SearchBar/>
         <h2 className=" text-3xl font-semibold text-center py-5 ">
           Movies in <span className=' text-green-500'>{genre}</span>
         </h2>

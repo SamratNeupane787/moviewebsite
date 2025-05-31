@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import ListMovie from '../components/ListMovie'
 import Link from 'next/link'
-
+import { FaDumpster } from 'react-icons/fa'
 function page() {
   const  [fav, setFav] = useState([])
 
@@ -16,16 +16,21 @@ function page() {
      
       alert("Error getting favourite movie")
     }
-  },[])
+  },[fav])
   console.log(fav)
 
   if(fav.length == 0){
-    return(<p>No movies added to Favourites</p>)
+    return (
+      <p className=" text-4xl h-screen text-center">
+        No movies added to <span className=' text-green-600'>Favourites</span>
+      </p>
+    );
   }
   
   return (
-    <div className=" pt-8 grid grid-cols-1 place-items-center  gap-3  sm:grid-cols-1 md:grid-cols-4">
+    <div className="  grid grid-cols-1 place-items-center    sm:grid-cols-1 md:grid-cols-4">
       {fav.map((item, index) => (
+        
           <ListMovie
             key={index}
             image={item.image}
@@ -34,6 +39,8 @@ function page() {
             year={item.year}
             id={item.id}
           />
+         
+       
       ))}
     </div>
   );
