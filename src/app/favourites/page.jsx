@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import ListMovie from '../components/ListMovie'
+import Link from 'next/link'
 
 function page() {
   const  [fav, setFav] = useState([])
@@ -23,15 +24,16 @@ function page() {
   }
   
   return (
-    <div className=' pt-8 grid grid-cols-1 place-items-center  gap-3  sm:grid-cols-1 md:grid-cols-4'>
+    <div className=" pt-8 grid grid-cols-1 place-items-center  gap-3  sm:grid-cols-1 md:grid-cols-4">
       {fav.map((item, index) => (
-        <ListMovie
-          key={index}
-          image={item.image}
-          title={item.title}
-          rating={item.rating}
-          year={item.year}
-        />
+          <ListMovie
+            key={index}
+            image={item.image}
+            title={item.title}
+            rating={item.rating}
+            year={item.year}
+            id={item.id}
+          />
       ))}
     </div>
   );

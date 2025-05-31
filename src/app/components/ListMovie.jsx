@@ -44,7 +44,7 @@ function ListMovie({id,image, title ,rating ,year}) {
       notify("Added to favourite");
     } else {
       notify("Already in favorites");
-      alert("");
+     
     }
   };
   
@@ -86,7 +86,7 @@ function ListMovie({id,image, title ,rating ,year}) {
         >
           <button className=" flex flex-row gap-3 items-center justify-center">
             <MdOutlineBookmarkAdd />
-            {added ? "Added to FAV" : "Favourite"}
+            {added ? "Added to fav" : "Favourite"}
           </button>
           <ToastContainer />
         </div>
